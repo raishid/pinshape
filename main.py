@@ -9,10 +9,10 @@ while True:
         print('No hay datos en la hoja excel')
         input("presiona Enter para continuar.")
         break
-    firefox = firefox_class.Firefox_driver()
-    #link = firefox.Iniciar_registro(datos['email'], datos['user'], datos['web'], datos['bio'])
-    #Read_excel.Guardar_link(fila_inicial, link)
-    break
+    firefox = firefox_class.Firefox_driver(datos['proxie'])
+    link = firefox.Iniciar_registro(datos['email'], datos['user'], datos['web'], datos['bio'])
+    Read_excel.Guardar_link(fila_inicial, link)
+    fila_inicial += 1
 
 print('Registrado todo exitosamente!!')
 

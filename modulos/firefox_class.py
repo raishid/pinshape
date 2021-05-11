@@ -8,15 +8,18 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 class Firefox_driver:
-    def __init__(self):
+    def __init__(self, proxie):
         options = {
             'proxy': {
-                'http': 'http://192.168.10.100:8888',
-                'https': 'https://192.168.10.100:8888',
-                'no_proxy': 'localhost,127.0.0.1'
+                'http': "http://"+proxie,
+                'https': "https://"+proxie,
+                'no_proxy': 'localhost,127.0.0.1,dev_server:8080'
             }
         }
-        driver = webdriver.Firefox(executable_path="driver/geckodriver.exe", seleniumwire_options=options)#, firefox_profile=perfil)
+        if proxie == None:
+            driver = webdriver.Firefox(executable_path="driver/geckodriver.exe")
+        else:
+            driver = webdriver.Firefox(executable_path="driver/geckodriver.exe", seleniumwire_options=options)#, firefox_profile=perfil)
         self.driver = driver
 
     def Iniciar_registro(self, email, user, web, bio):

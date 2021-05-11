@@ -22,6 +22,8 @@ class Read_excel:
                 "proxie": proxie,
                 "email": email
             }
+            if proxie == None:
+                data['proxie'] = None
             return data
     @staticmethod
     def Guardar_link(fila, link):
